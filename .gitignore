@@ -1,0 +1,27 @@
+.bsp
+ignore
+.vagrant
+logs
+*.log
+target
+.idea
+*.iml
+/out
+.idea_modules
+.classpath
+.project
+.settings
+.DS_Store
+*.class
+
+build
+metals.sbt
+
+.vscode
+
+# eclipse
+.scala_dependencies
+.buildpath
+.target
+*.rdb
+.bloop
