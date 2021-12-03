@@ -8,8 +8,6 @@ def parseInt(string: String): Int = {
 
 @main def Day3(): Unit = {
   val input: Array[String] = IO.readLines("3.txt")
-  val rowLength = input(0).toString.length
-  val columns = Array.ofDim[String](rowLength , input.length)
 
   def part2(reports: Array[String]): Unit = {
     @tailrec
