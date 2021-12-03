@@ -1,6 +1,8 @@
 package com.example.aoc
 
-import com.example.aoc.IO.readLines
+import IO.readLines
+
+import scala.language.postfixOps
 
 @main def Day1: Unit = {
   var numbers = readLines("1.txt").map(_.toInt)
@@ -14,6 +16,7 @@ import com.example.aoc.IO.readLines
   )
   println(count)
 
+  //**************//
 
   val count2 = numbers
     .sliding(3)
