@@ -4,7 +4,7 @@ import IO.readLines
 
 import scala.language.postfixOps
 
-@main def Day1: Unit = {
+@main def Day1(): Unit = {
   var numbers = readLines("1.txt").map(_.toInt)
 
   var count = 0

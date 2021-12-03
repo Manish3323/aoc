@@ -1,6 +1,6 @@
 package com.example.aoc
 
-@main def Day2: Unit = {
+@main def Day2(): Unit = {
   val input = IO.readLines("2.txt")
 //  val commands = input.map(x => x.split(" ").toList match {
 //    case Nil => ???
