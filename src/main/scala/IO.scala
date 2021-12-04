@@ -7,8 +7,3 @@ object IO:
     val file = getClass.getClassLoader.getResource(resource).toURI
     Files.readString(Paths.get(file)).split("\n")
   }
-
-  def readAllLines(resource: String) = {
-    val file = getClass.getClassLoader.getResource(resource).toURI
-    Files.readAllLines(Paths.get(file))
-  }

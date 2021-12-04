@@ -11,7 +11,7 @@ def parseInt(string: String): Int = {
 
   def part2(reports: Array[String]): Unit = {
     @tailrec
-    def filterReports(reports: Array[String], index: Int, charToBeGreater: Char, charToBeLesser: Char): Int = {
+    def filterReports(reports: Array[String], charToBeGreater: Char, charToBeLesser: Char, index: Int = 0): Int = {
       val zeroCount = reports.count(x => x.charAt(index) == '0')
       val oneCounts = reports.count(x => x.charAt(index) == '1')
       val filterByChar = if (zeroCount > oneCounts) charToBeGreater else charToBeLesser
@@ -19,11 +19,11 @@ def parseInt(string: String): Int = {
       val filteredReports = reports.filter(_.charAt(index) == filterByChar)
 
       if (filteredReports.length == 1) parseInt(filteredReports.head)
-      else filterReports(filteredReports, index + 1, charToBeGreater, charToBeLesser)
+      else filterReports(filteredReports, charToBeGreater, charToBeLesser, index + 1)
     }
-    val oxygenCount = filterReports(input, 0, '1', '0')
-    val carbonCount = filterReports(input, 0, '0', '1')
-    print("Part 2 answer: " + oxygenCount * carbonCount)
+    val oxygenCount = filterReports(input, '1', '0')
+    val carbonCount = filterReports(input, '0', '1')
+    println("Part 2 : " + oxygenCount * carbonCount)
   }
 
   def part1(input: List[String]): Unit = {
@@ -43,8 +43,7 @@ def parseInt(string: String): Int = {
     }
     val gammaRate = calculate(d1, d2, 0, 1)
     val epsilonRate = calculate(d1, d2, 1, 0)
-    val powerConsumption = gammaRate * epsilonRate
-    print("Part 1 : answer " + powerConsumption)
+    println("Part 1 : " +  gammaRate * epsilonRate)
   }
 
   //
