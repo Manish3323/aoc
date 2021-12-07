@@ -7,26 +7,24 @@ def Day7(): Unit = {
 
   val input = IO.readLines("7.txt").head.split(",").map(_.toInt)
 
+  def calcPart1(elem: Int, elem2: Int) = Math.abs(elem - elem2)
 
 
-  def part1(): Int = {
-    input.map(elem => {
-      input.foldLeft(0)((sum, elem2) => {
-        sum + Math.abs(elem - elem2)
-      })
-    }).min
+  def calcPart2(elem: Int, elem2: Int) = {
+    val n = Math.abs(elem - elem2)
+    n * (n + 1) / 2
   }
 
-  def part2(): Int = {
+  def process(calculate: (elem: Int, elem2: Int) => Int): Int = {
     val min = input.min
     val max = input.max
     (min to max).map(elem => {
       input.foldLeft(0)((sum, elem2) => {
-        sum + range(elem, elem2).indices.map(identity).sum
+       sum + calculate(elem, elem2)
       })
     }).min
   }
 
-  println("Part 1 " +  part1())
-  println("Part 2 " +  part2())
+  println("Part 1 " +  process(calcPart1))
+  println("Part 2 " +  process(calcPart2))
 }
