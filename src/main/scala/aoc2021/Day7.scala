@@ -1,5 +1,9 @@
 
 package com.example.aoc
+package aoc2021
+
+import java.io.PrintWriter
+import java.nio.file.{Files, Paths}
 
 @main
 def Day7(): Unit = {
@@ -8,7 +12,6 @@ def Day7(): Unit = {
   val input = IO.readLines("7.txt").head.split(",").map(_.toInt)
 
   def calcPart1(elem: Int, elem2: Int) = Math.abs(elem - elem2)
-
 
   def calcPart2(elem: Int, elem2: Int) = {
     val n = Math.abs(elem - elem2)
