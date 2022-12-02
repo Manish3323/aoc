@@ -1,6 +1,7 @@
 package com.example.aoc.aoc2021
 
 import scala.collection.mutable
+import com.example.aoc.IO
 
 @main
 def Day10(): Unit = {

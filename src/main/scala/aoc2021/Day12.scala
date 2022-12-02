@@ -3,6 +3,7 @@ package com.example.aoc.aoc2021
 import java.util
 import scala.collection.mutable
 import scala.util.chaining.*
+import com.example.aoc.IO
 
 @main
 def Day12() : Unit = {
