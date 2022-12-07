@@ -5,7 +5,7 @@ import IO.readLines
 
 import scala.language.postfixOps
 
-@main def Day1(): Unit = {
+@main def Day2(): Unit = {
   val map: Map[String, Seq[String]] = Map(
     "A" -> Seq("Y", "X", "Z"),
     "B" -> Seq("Z", "Y", "X"),

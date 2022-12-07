@@ -7,12 +7,17 @@ import IO.{readLines, readLines2}
 import scala.language.postfixOps
 
 @main def Day5(): Unit = {
+  type From = Int
+  type To = Int
+  type Number = Int
+  type Action = (Number, From, To)
+
   val lines = readLines("2022/5.txt")
   val towersLine = lines.filter(line => line.startsWith(" 1")).head
   val index = lines.indexOf(towersLine)
   val towers = lines.take(index)
   val actionLines = lines.takeRight(lines.length - 1 - (index + 1))
-  val actions = actionLines.map {
+  val actions: Array[Action] = actionLines.map {
     case s"move $n from $from to $to" => (n.toInt, from.toInt, to.toInt)
   }
   val mapOftowers = towers.foldLeft(Map.empty[Int, List[Char]])((map2,line) => {
@@ -24,7 +29,7 @@ import scala.language.postfixOps
     value
   })
   type Tower = List[Char]
-  def problem(actions:  Array[(Int, Int, Int)], mapOftowers:  Map[Int, Tower], moveItemsInOrder: Boolean): Unit = {
+  def problem(actions:  Array[Action], mapOftowers:  Map[Int, Tower], moveItemsInOrder: Boolean): Unit = {
     val tuples = actions.foldLeft(mapOftowers)((towers, action) => {
       val itemsToBeMoved = towers(action._2).takeRight(action._1)
       val orderedItems = if moveItemsInOrder then itemsToBeMoved else itemsToBeMoved.reverse
@@ -32,6 +37,7 @@ import scala.language.postfixOps
       val removedStack = towers(action._2).dropRight(action._1)
       towers ++ Map(action._2 -> removedStack, action._3 -> newItems)
     })
+
     val value = tuples.toSeq.sortBy(_._1: _*)
     println(value.map(_._2.last).mkString)
   }
