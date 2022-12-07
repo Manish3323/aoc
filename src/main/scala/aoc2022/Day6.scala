@@ -9,9 +9,9 @@ import scala.language.postfixOps
   val line = readLines("2022/6.txt").head
 
   def problem(n: Int): Unit = {
-    val value = line.toCharArray.sliding(n).zipWithIndex.filter(arr => {
+    val value = line.toCharArray.sliding(n).zipWithIndex.find(arr => {
       arr._1.distinct.length == arr._1.length
-    }).toList.head
+    }).get
     println("Solution: " + (value._2 + n))
   }
 
